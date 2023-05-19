@@ -7,7 +7,7 @@ class Program
         Console.WriteLine("Torakka-jalka-ydinase. Valitse 1-4." + "\n" +
             "1) Torakka 2) Jalka 3) Ydinase 4) Poistu");
         Random rnd = new Random(); //luodaan random-muuttuja, jota tietokone käyttää
-        int computer = rnd.Next(1, 4); //kerrotaan tietokoneelle, että se valitsee satunnaisluvun 1-4 väliltä
+        int computer = rnd.Next(1, 4); //kerrotaan tietokoneelle, että se valitsee satunnaisluvun 1-3 väliltä
         int valinta = int.Parse(Console.ReadLine());
         switch (valinta) //tehdään switch-case käyttäjän valinnalle
         {
@@ -20,25 +20,33 @@ class Program
             case 3:
                 Console.Write("Ydinase! ");
                 break;
-            case 4:
+            default:
                 Console.WriteLine("");
+                return;
+        }
+        switch (computer) // switch-case tietokoneen valinnalle
+        {
+            case 1:
+                Console.WriteLine("Tietokone valitsi: Torakka!");
+                break;
+            case 2:
+                Console.WriteLine("Tietokone valitsi: Jalka!");
+                break;
+            case 3:
+                Console.WriteLine("Tietokone valitsi: Ydinase!");
                 break;
         }
         if (valinta > computer) //ehtolausekkeet, jonka perusteella määräytyy kommentti
         {
-            Console.WriteLine("Tietokone valitsi " + computer + ". Voitit!");
+            Console.WriteLine("Voitit!");
         }
-            if (valinta < computer)
+           else if (valinta < computer)
             {
-                Console.WriteLine("Tietokone valitsi " + computer + ". Hävisit!");
+                Console.WriteLine("Hävisit!");
             }
-            if (valinta == computer)
+            else
             {
-                Console.WriteLine("Tietokone valitsi " + computer + ". Tasapeli!");
-            }
-            if (valinta == 4)
-            {
-            Console.WriteLine("");
+                Console.WriteLine("Tasapeli!");
             }
     }
 }
